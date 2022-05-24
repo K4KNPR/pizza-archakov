@@ -1,6 +1,6 @@
 import {FC, useState} from 'react';
 
-interface Pizza {
+export interface Pizza {
     "id": number,
     "imageUrl": string,
     "title": string,
@@ -29,8 +29,8 @@ export const PizzaCart: FC<Pizza> = (props) => {
                     <ul>
                         {
                             props.types.map(
-                                (type) =>
-                                    <li className={activeDoughType === type ? "active" : ''}
+                                (type, index) =>
+                                    <li key={index} className={activeDoughType === type ? "active" : ''}
                                         onClick={() => setActiveDoughType(type)}
                                     >
                                         {doughType[type]}
@@ -42,7 +42,8 @@ export const PizzaCart: FC<Pizza> = (props) => {
                         {
                             props.sizes.map(
                                 (size, index) =>
-                                    <li className={activeSize === index ? "active" : ''}
+                                    <li key={index}
+                                        className={activeSize === index ? "active" : ''}
                                         onClick={() => setActiveSize(index)}
                                     >
                                         {size} см.

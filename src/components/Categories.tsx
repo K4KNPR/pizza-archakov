@@ -8,8 +8,9 @@ export const Categories: FC = () => {
     return (
         <div className="categories">
             <ul>
-                {categories.map((cat,i) =>
-                    <li className={i === activeCategory ? "active" : ''} onClick={() => setActiveCategory(i)}>{cat}</li>)}
+                {categories.map((cat, index) =>
+                    <li key={index} className={index === activeCategory ? "active" : ''}
+                        onClick={() => setActiveCategory(index)}>{cat}</li>)}
             </ul>
         </div>
     );
