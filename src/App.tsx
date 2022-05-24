@@ -1,10 +1,11 @@
 import React from 'react';
 import './scss/app.scss';
 import {Header} from "./components/Header";
-import {Category} from "./components/Category";
+import {Categories} from "./components/Categories";
 import {Sorting} from "./components/Sorting";
 import {PizzaCart} from "./components/PizzaCart";
 
+import pizzas from "./assets/pizza.json"
 function App() {
   return (
     <div className="App">
@@ -13,14 +14,14 @@ function App() {
         <div className="content">
           <div className="container">
             <div className="content__top">
-              <Category/>
+              <Categories/>
               <Sorting/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-              <PizzaCart/>
-              <PizzaCart/>
-              <PizzaCart/>
+              {
+                pizzas.map(pizza => <PizzaCart {...pizza}/>)
+              }
             </div>
           </div>
         </div>
