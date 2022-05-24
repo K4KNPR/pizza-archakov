@@ -14,7 +14,7 @@ interface Pizza {
 const doughType = ['тонкое', 'традиционное']
 
 export const PizzaCart: FC<Pizza> = (props) => {
-    const [activeDoughType, setActiveDoughType] = useState(0)
+    const [activeDoughType, setActiveDoughType] = useState(props.types[0])
     const [activeSize, setActiveSize] = useState(0)
     return (
         <>

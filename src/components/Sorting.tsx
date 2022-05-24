@@ -1,7 +1,20 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
+
+const sortVariants = ['популярности','цене','алфавиту']
+
 
 export const Sorting: FC = () => {
     const [popupVisible, setPopupVisible] = useState(false)
+    const [sortVariant, setSortVariant] = useState(0)
+
+   /* useEffect(() => {
+        setPopupVisible(!popupVisible)
+    }, [sortVariant])*/
+
+    const onClickSorting = (index: number) => {
+        setSortVariant(index)
+        setPopupVisible(false)
+    }
     return (
         <>
             <div className="sort">
@@ -19,13 +32,19 @@ export const Sorting: FC = () => {
                         />
                     </svg>
                     <b>Сортировка по:</b>
-                    <span>популярности</span>
+                    <span onClick={() => setPopupVisible(!popupVisible)}>{sortVariants[sortVariant]}</span>
                 </div>
                 {popupVisible && <div className="sort__popup">
                     <ul>
-                        <li className="active">популярности</li>
-                        <li>цене</li>
-                        <li>алфавиту</li>
+                        {
+                            sortVariants.map(
+                                (variant,index) =>
+                                    <li key={variant}
+                                    className={sortVariant === index ? "active" : ''}
+                                        onClick={() => onClickSorting(index)}
+                                    >{variant}</li>
+                            )
+                        }
                     </ul>
                 </div>}
             </div>
