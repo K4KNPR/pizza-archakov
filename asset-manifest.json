@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/pizza-archakov/static/css/main.749c1b18.css",
-    "main.js": "/pizza-archakov/static/js/main.81af22cb.js",
+    "main.js": "/pizza-archakov/static/js/main.ebf133a4.js",
     "static/media/empty-cart.png": "/pizza-archakov/static/media/empty-cart.db905d1f4b063162f25b.png",
     "static/media/pizza-logo.svg": "/pizza-archakov/static/media/pizza-logo.ba850e74b1991e0a0d9b42354798032e.svg",
     "index.html": "/pizza-archakov/index.html",
     "static/media/menu-list-dropdown-svgrepo-com.svg": "/pizza-archakov/static/media/menu-list-dropdown-svgrepo-com.79b99442ebee64df10eddb0802c8a8ca.svg",
     "main.749c1b18.css.map": "/pizza-archakov/static/css/main.749c1b18.css.map",
-    "main.81af22cb.js.map": "/pizza-archakov/static/js/main.81af22cb.js.map"
+    "main.ebf133a4.js.map": "/pizza-archakov/static/js/main.ebf133a4.js.map"
   },
   "entrypoints": [
     "static/css/main.749c1b18.css",
-    "static/js/main.81af22cb.js"
+    "static/js/main.ebf133a4.js"
   ]
 }
