@@ -3,14 +3,17 @@ import React, {FC, useState} from 'react';
 
 const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
 
-export const Categories: FC = () => {
-    const [activeCategory, setActiveCategory] = useState(0)
+interface Category {
+    categoryId: number, setCategoryId: Function
+}
+
+export const Categories: FC<Category> = (props) => {
     return (
         <div className="categories">
             <ul>
                 {categories.map((cat, index) =>
-                    <li key={index} className={index === activeCategory ? "active" : ''}
-                        onClick={() => setActiveCategory(index)}>{cat}</li>)}
+                    <li key={index} className={index === props.categoryId ? "active" : ''}
+                        onClick={() => props.setCategoryId(index)}>{cat}</li>)}
             </ul>
         </div>
     );

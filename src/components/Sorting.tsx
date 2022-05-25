@@ -1,18 +1,36 @@
 import React, {FC, useEffect, useState} from 'react';
 
-const sortVariants = ['популярности','цене','алфавиту']
+import ASC from '../assets/img/menu-list-dropdown-svgrepo-com.svg'
 
+const sortVariants = [
+    {name: 'популярности', sort: 'rating'},
+    {name: 'цене', sort: 'price'},
+    {name: 'алфавиту', sort: 'алфавиту'},
+]
 
-export const Sorting: FC = () => {
+/*const sortVariants = {
+{rating: 'популярности'},
+    {price: 'цене'},
+    {title: 'алфавиту'},
+}*/
+
+interface Sorting {
+    orderType: number,
+    setOrderType: Function,
+    sortVariant: {name: string, sort: string},
+    setSortVariant: Function
+}
+
+export const Sorting: FC<Sorting> = ({orderType, setOrderType, sortVariant, setSortVariant}) => {
     const [popupVisible, setPopupVisible] = useState(false)
-    const [sortVariant, setSortVariant] = useState(0)
 
-   /* useEffect(() => {
-        setPopupVisible(!popupVisible)
-    }, [sortVariant])*/
+    console.log('orderType', orderType);
+    /* useEffect(() => {
+         setPopupVisible(!popupVisible)
+     }, [sortVariant])*/
 
-    const onClickSorting = (index: number) => {
-        setSortVariant(index)
+    const onClickSorting = (variant :{name: string, sort: string}) => {
+        setSortVariant(variant)
         setPopupVisible(false)
     }
     return (
@@ -32,17 +50,22 @@ export const Sorting: FC = () => {
                         />
                     </svg>
                     <b>Сортировка по:</b>
-                    <span onClick={() => setPopupVisible(!popupVisible)}>{sortVariants[sortVariant]}</span>
+                    <span onClick={() => setPopupVisible(!popupVisible)}>{sortVariant.name}</span>
+
+                    <img onClick={() => setOrderType(!orderType)} className={orderType ? '' : 'rotate'} src={ASC}/>
+                </div>
+                <div className="sort__asc-desc">
+
                 </div>
                 {popupVisible && <div className="sort__popup">
                     <ul>
                         {
                             sortVariants.map(
-                                (variant,index) =>
-                                    <li key={variant}
-                                    className={sortVariant === index ? "active" : ''}
-                                        onClick={() => onClickSorting(index)}
-                                    >{variant}</li>
+                                (variant, index) =>
+                                    <li key={variant.name}
+                                        className={sortVariant.sort === variant.sort ? "active" : ''}
+                                        onClick={() => onClickSorting(variant)}
+                                    >{variant.name}</li>
                             )
                         }
                     </ul>
