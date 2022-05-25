@@ -1,6 +1,7 @@
 {
   "name": "pizza-archakov",
   "version": "0.1.0",
+  "homepage": "https://k4knpr.github.io/pizza-archakov/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -50,6 +51,5 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0"
-  },
-  "homepage": "https://k4knpr.github.io/pizza-archakov/"
+  }
 }
