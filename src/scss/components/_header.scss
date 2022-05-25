@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  @media (max-width: 750px) {
+  @media (max-width: 1110px) {
     .header__logo {
       padding-bottom: 20px;
     }
@@ -20,6 +20,8 @@
     }
 
   }
+
+
   &__logo {
     display: flex;
 

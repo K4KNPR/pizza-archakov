@@ -6,9 +6,21 @@
   &__label {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
-    svg {
+    img {
+      transition: all ease-in-out 0.1s;
+    }
+
+    .rotate {
+      transform: rotate(180deg)
+    }
+
+    &__icon {
       margin-right: 8px;
+      width: 10px;
+      height: 10px;
+
     }
 
     b {
@@ -20,14 +32,12 @@
       border-bottom: 1px dashed $orange;
       cursor: pointer;
     }
-    img {
-      cursor: pointer;
-    }
-    .rotate {
-      transform: rotate(180deg)
-    }
+
   }
 
+  &__asc-desc {
+
+  }
 
 
   &__popup {

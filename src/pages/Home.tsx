@@ -19,6 +19,7 @@ export const Home: FC = () => {
         axios.get(apiURL, {
             params:
                 {
+                    page: 1, limit: 4,
                     order: ascDesc[+orderType],
                     category: activeCategory !== 0 ? activeCategory : '',
                     sortBy: sortVariant.sort,
@@ -43,6 +44,9 @@ export const Home: FC = () => {
                     isLoading ? [...new Array(6)].map((_, i) => <PizzaSkeleton key={i}/>)
                         : pizzas.map(pizza => <PizzaCart key={pizza.id} {...pizza}/>)
                 }
+            </div>
+            <div>
+                <p>Пагинация</p>
             </div>
         </div>
     );
