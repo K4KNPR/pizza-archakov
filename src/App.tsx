@@ -7,15 +7,15 @@ import {BucketPage} from "./pages/BucketPage";
 import {NotFoundPage} from "./pages/NotFoundPage";
 
 function App() {
-
+    const [search, setSearch] = useState('')
 
     return (
         <div className="App">
             <div className="wrapper">
-                <Header/>
+                <Header search={search} setSearch={setSearch} />
                 <div className="content">
                     <Routes>
-                        <Route path={'/'} element={<Home/>}/>
+                        <Route path={'/'} element={<Home search={search} setSearch={setSearch}/>}/>
                         <Route path={'/cart'} element={<BucketPage/>}/>
                         <Route path={'*'} element={<NotFoundPage/>}/>
                     </Routes>

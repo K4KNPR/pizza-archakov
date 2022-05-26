@@ -4,7 +4,7 @@
   .search {
     border: 1px solid rgba(0,0,0,0.1);
     width: 450px;
-    padding: 15px 20px 15px 45px;
+    padding: 15px 40px 15px 45px;
     border-radius: 20px;
     font-size: 16px;
     opacity: 0.5;
@@ -24,8 +24,8 @@
   }
   .clear {
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     top: 15px;
     right: 15px;
     cursor: pointer;
@@ -37,7 +37,7 @@
   @media (max-width: 550px) {
     .search {
       width: 230px;
-      padding: 15px 20px;
+      padding: 15px 45px 15px 15px;
     }
     .icon {
       display: none;

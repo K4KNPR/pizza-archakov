@@ -5,32 +5,38 @@ import {PizzaSkeleton} from "../components/PizzaCart/PizzaSkeleton";
 import {Pizza, PizzaCart} from "../components/PizzaCart/PizzaCart";
 import axios from "axios";
 import {apiURL} from '../config/api'
+import {Pagination} from "../components/Pagination/Pagination";
+import {ISearch} from "../components/Search/Search";
 
 const ascDesc = ['asc', 'desc']
 
-export const Home: FC = () => {
+export const Home: FC<ISearch> = ({search}) => {
     const [pizzas, setPizza] = useState<Pizza[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [activeCategory, setActiveCategory] = useState(0)
     const [orderType, setOrderType] = useState(1)
     const [sortVariant, setSortVariant] = useState({name: 'популярности', sort: 'rating'},)
+
+    const [currentPage, setCurrentPage] = useState(1)
     useEffect(() => {
+
+        if (search !== '')  setActiveCategory(0)
         setIsLoading(true)
         axios.get(apiURL, {
             params:
                 {
-                    page: 1, limit: 4,
+                    search: search !== '' ? search : '',
                     order: ascDesc[+orderType],
-                    category: activeCategory !== 0 ? activeCategory : '',
                     sortBy: sortVariant.sort,
-
+                    page: currentPage, limit: 4,
+                    category: activeCategory !== 0 ? activeCategory : ''
                 }
         })
             .then((res) => {
                 setPizza(res.data)
                 setIsLoading(false)
             })
-    }, [activeCategory,sortVariant, orderType])
+    }, [activeCategory, sortVariant, orderType, search, currentPage])
     return (
         <div className="container">
             <div className="content__top">
@@ -45,9 +51,7 @@ export const Home: FC = () => {
                         : pizzas.map(pizza => <PizzaCart key={pizza.id} {...pizza}/>)
                 }
             </div>
-            <div>
-                <p>Пагинация</p>
-            </div>
+            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </div>
     );
 };
