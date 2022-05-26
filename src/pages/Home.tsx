@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useContext, useEffect, useState} from 'react';
 import {Categories} from "../components/Categories";
 import {Sorting} from "../components/Sorting";
 import {PizzaSkeleton} from "../components/PizzaCart/PizzaSkeleton";
@@ -6,11 +6,13 @@ import {Pizza, PizzaCart} from "../components/PizzaCart/PizzaCart";
 import axios from "axios";
 import {apiURL} from '../config/api'
 import {Pagination} from "../components/Pagination/Pagination";
-import {ISearch} from "../components/Search/Search";
+import {MyContext} from "../App";
 
 const ascDesc = ['asc', 'desc']
 
-export const Home: FC<ISearch> = ({search}) => {
+export const Home: FC = () => {
+    const searchContext = useContext(MyContext)
+
     const [pizzas, setPizza] = useState<Pizza[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [activeCategory, setActiveCategory] = useState(0)
@@ -20,12 +22,12 @@ export const Home: FC<ISearch> = ({search}) => {
     const [currentPage, setCurrentPage] = useState(1)
     useEffect(() => {
 
-        if (search !== '')  setActiveCategory(0)
+        if (searchContext!.search !== '')  setActiveCategory(0)
         setIsLoading(true)
         axios.get(apiURL, {
             params:
                 {
-                    search: search !== '' ? search : '',
+                    search: searchContext!.search !== '' ? searchContext!.search : '',
                     order: ascDesc[+orderType],
                     sortBy: sortVariant.sort,
                     page: currentPage, limit: 4,
@@ -36,7 +38,7 @@ export const Home: FC<ISearch> = ({search}) => {
                 setPizza(res.data)
                 setIsLoading(false)
             })
-    }, [activeCategory, sortVariant, orderType, search, currentPage])
+    }, [activeCategory, sortVariant, orderType, searchContext!.search, currentPage])
     return (
         <div className="container">
             <div className="content__top">

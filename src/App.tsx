@@ -6,20 +6,27 @@ import {Home} from "./pages/Home";
 import {BucketPage} from "./pages/BucketPage";
 import {NotFoundPage} from "./pages/NotFoundPage";
 
+type defaultValue = {
+    search: string,
+    setSearch: Function
+}
+export const MyContext = React.createContext<defaultValue | undefined>(undefined);
+
 function App() {
     const [search, setSearch] = useState('')
-
     return (
         <div className="App">
             <div className="wrapper">
-                <Header search={search} setSearch={setSearch} />
-                <div className="content">
-                    <Routes>
-                        <Route path={'/'} element={<Home search={search} setSearch={setSearch}/>}/>
-                        <Route path={'/cart'} element={<BucketPage/>}/>
-                        <Route path={'*'} element={<NotFoundPage/>}/>
-                    </Routes>
-                </div>
+                <MyContext.Provider value={{search, setSearch}}>
+                    <Header/>
+                    <div className="content">
+                        <Routes>
+                            <Route path={'/'} element={<Home />}/>
+                            <Route path={'/cart'} element={<BucketPage/>}/>
+                            <Route path={'*'} element={<NotFoundPage/>}/>
+                        </Routes>
+                    </div>
+                </MyContext.Provider>
             </div>
         </div>
     );

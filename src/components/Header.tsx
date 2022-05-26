@@ -4,12 +4,8 @@ import pizzaLogo from '../assets/img/pizza-logo.svg'
 import {Link} from "react-router-dom";
 import {Search} from "./Search/Search";
 
-interface IHeader {
-    search: string,
-    setSearch: Function
-}
 
-export const Header: FC<IHeader> = ({search, setSearch}) => {
+export const Header: FC = () => {
 
     return (
         <>
@@ -22,7 +18,7 @@ export const Header: FC<IHeader> = ({search, setSearch}) => {
                             <p>самая вкусная пицца во вселенной</p>
                         </div>
                     </Link>
-                    <Search search={search} setSearch={setSearch}/>
+                    <Search/>
                     <HeaderCart/>
                 </div>
             </div>
