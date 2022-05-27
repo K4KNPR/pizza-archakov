@@ -24,6 +24,11 @@
 
   }
   :global {
+    @media (max-width: 550px) {
+      li:not(.selected):not(:last-child):not(:first-child){
+        display: none;
+      }
+    }
     .selected {
       a {
         background: #fe5f1e;
@@ -31,6 +36,9 @@
       }
 
     }
+
   }
+
+
 
 }

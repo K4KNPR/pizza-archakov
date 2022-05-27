@@ -1,6 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
 import arrow from '../assets/img/arrow.svg'
 import ASC from '../assets/img/menu-list-dropdown-svgrepo-com.svg'
+import {useAppDispatch, useAppSelector} from "../store/hooks";
+import {changeOrder, changeSortVariant} from "../store/sorting/sortingSlice";
 
 const sortVariants = [
     {name: 'популярности', sort: 'rating'},
@@ -14,21 +16,18 @@ const sortVariants = [
     {title: 'алфавиту'},
 }*/
 
-interface Sorting {
-    orderType: number,
-    setOrderType: Function,
-    sortVariant: {name: string, sort: string},
-    setSortVariant: Function
-}
 
-export const Sorting: FC<Sorting> = ({orderType, setOrderType, sortVariant, setSortVariant}) => {
+export const Sorting: FC = () => {
     const [popupVisible, setPopupVisible] = useState(false)
     /* useEffect(() => {
          setPopupVisible(!popupVisible)
      }, [sortVariant])*/
+    const dispatch = useAppDispatch()
+    const sortVariant = useAppSelector(((state) => state.sorting.sortVariant))
+    const orderType = useAppSelector(((state) => state.sorting.orderType))
 
     const onClickSorting = (variant :{name: string, sort: string}) => {
-        setSortVariant(variant)
+        dispatch(changeSortVariant(variant))
         setPopupVisible(false)
     }
     return (
@@ -40,7 +39,7 @@ export const Sorting: FC<Sorting> = ({orderType, setOrderType, sortVariant, setS
                         <b>Сортировка по:</b>
                         <span >{sortVariant.name}</span>
                     </div>
-                    <img onClick={() => setOrderType(!orderType)} className={`asc-desc ${orderType ? '' : 'rotate'}`} src={ASC}/>
+                    <img onClick={() => dispatch(changeOrder())} className={`asc-desc ${orderType ? '' : 'rotate'}`} src={ASC}/>
                 </div>
                 {popupVisible && <div className="sort__popup">
                     <ul>

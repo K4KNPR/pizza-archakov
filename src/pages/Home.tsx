@@ -7,6 +7,8 @@ import axios from "axios";
 import {apiURL} from '../config/api'
 import {Pagination} from "../components/Pagination/Pagination";
 import {MyContext} from "../App";
+import {useAppDispatch, useAppSelector} from "../store/hooks";
+import {changeCategory} from "../store/sorting/sortingSlice";
 
 const ascDesc = ['asc', 'desc']
 
@@ -15,14 +17,15 @@ export const Home: FC = () => {
 
     const [pizzas, setPizza] = useState<Pizza[]>([])
     const [isLoading, setIsLoading] = useState(false)
-    const [activeCategory, setActiveCategory] = useState(0)
-    const [orderType, setOrderType] = useState(1)
-    const [sortVariant, setSortVariant] = useState({name: 'популярности', sort: 'rating'},)
+    const dispatch = useAppDispatch()
+    const activeCategory = useAppSelector(((state) => state.sorting.category))
+    const sortVariant = useAppSelector(((state) => state.sorting.sortVariant))
+    const orderType = useAppSelector(((state) => state.sorting.orderType))
 
     const [currentPage, setCurrentPage] = useState(1)
     useEffect(() => {
 
-        if (searchContext!.search !== '')  setActiveCategory(0)
+        if (searchContext!.search !== '')  dispatch(changeCategory(0))
         setIsLoading(true)
         axios.get(apiURL, {
             params:
@@ -42,14 +45,13 @@ export const Home: FC = () => {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories categoryId={activeCategory} setCategoryId={setActiveCategory}/>
-                <Sorting orderType={orderType} setOrderType={setOrderType} sortVariant={sortVariant}
-                         setSortVariant={setSortVariant}/>
+                <Categories/>
+                <Sorting/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {
-                    isLoading ? [...new Array(6)].map((_, i) => <PizzaSkeleton key={i}/>)
+                    isLoading ? [...new Array(4)].map((_, i) => <PizzaSkeleton key={i}/>)
                         : pizzas.map(pizza => <PizzaCart key={pizza.id} {...pizza}/>)
                 }
             </div>
