@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pizza-archakov/static/css/main.59630c1d.css",
-    "main.js": "/pizza-archakov/static/js/main.41283244.js",
+    "main.css": "/pizza-archakov/static/css/main.8062f614.css",
+    "main.js": "/pizza-archakov/static/js/main.ddb5202d.js",
     "static/media/empty-cart.png": "/pizza-archakov/static/media/empty-cart.db905d1f4b063162f25b.png",
     "static/media/pizza-logo.svg": "/pizza-archakov/static/media/pizza-logo.ba850e74b1991e0a0d9b42354798032e.svg",
     "static/media/delete.svg": "/pizza-archakov/static/media/delete.ff4b675ac0b4ba21315ff1281bb94297.svg",
@@ -9,11 +9,11 @@
     "static/media/search.svg": "/pizza-archakov/static/media/search.d31d836d3650881f2c185acfdd291dff.svg",
     "static/media/arrow.svg": "/pizza-archakov/static/media/arrow.cdba5e7a3db5d2a9563f0b4f602ab632.svg",
     "static/media/menu-list-dropdown-svgrepo-com.svg": "/pizza-archakov/static/media/menu-list-dropdown-svgrepo-com.79b99442ebee64df10eddb0802c8a8ca.svg",
-    "main.59630c1d.css.map": "/pizza-archakov/static/css/main.59630c1d.css.map",
-    "main.41283244.js.map": "/pizza-archakov/static/js/main.41283244.js.map"
+    "main.8062f614.css.map": "/pizza-archakov/static/css/main.8062f614.css.map",
+    "main.ddb5202d.js.map": "/pizza-archakov/static/js/main.ddb5202d.js.map"
   },
   "entrypoints": [
-    "static/css/main.59630c1d.css",
-    "static/js/main.41283244.js"
+    "static/css/main.8062f614.css",
+    "static/js/main.ddb5202d.js"
   ]
 }
